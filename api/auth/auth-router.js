@@ -55,7 +55,7 @@ router.post("/login", checkUsernameExists, (req, res, next) => {
       token,
     })
   } else {
-    next({ status: 401, message: 'Invalid credentials' })
+    next({ status: 401, message: 'Invalid credentials' });
   }
 });
 
@@ -64,11 +64,11 @@ function buildToken(user) {
     subject: user.user_id,
     role_name: user.role_name,
     username: user.username,
-  }
+  };
   const options = {
     expiresIn: '1d',
-  }
-  return jwt.sign(payload, JWT_SECRET, options)
+  };
+  return jwt.sign(payload, JWT_SECRET, options);
 }
 
 module.exports = router;
